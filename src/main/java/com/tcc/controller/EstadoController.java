@@ -17,7 +17,7 @@ public class EstadoController {
     @Autowired
     private IEstadoService estadoService; 
 
-    @GetMapping("/estados")
+    @GetMapping("/estado/estados")
     public  Map<String, Object> getEstados() 
     {
         Map<String, Object> response = new HashMap<>();
@@ -34,7 +34,7 @@ public class EstadoController {
         return response;
     }
 
-    @GetMapping("/nombreEstado/{idEstado}")
+    @GetMapping("/estado/nombreEstado/{idEstado}")
     public Map<String, Object> getEstados(@PathVariable Integer idEstado)
     {
         Map<String, Object> response = new HashMap<>();

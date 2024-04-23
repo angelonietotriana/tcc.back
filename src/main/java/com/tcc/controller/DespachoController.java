@@ -32,8 +32,12 @@ public class DespachoController {
     private IDespachoService despachoService; 
 
 
-    @GetMapping("/despacho/{documentoRemitente}/{numeroEnvio}")
-    public  Map<String, Object> getEstados(@PathVariable Integer documentoRemitente, @PathVariable String numeroEnvio)
+    @GetMapping( value = {"/despacho/{documentoRemitente}/{numeroEnvio}",
+                "/despacho/NULL/{numeroEnvio}",
+                "/despacho/{documentoRemitente}/NULL"}
+                )
+    public  Map<String, Object> getEstados(@PathVariable(required = false) Integer documentoRemitente, 
+                                           @PathVariable(required = false) String numeroEnvio)
     {
         Map<String, Object> response = new HashMap<>();
         List<DespachoDtoOut> listResponse;
