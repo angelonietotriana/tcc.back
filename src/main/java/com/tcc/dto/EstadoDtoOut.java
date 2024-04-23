@@ -18,4 +18,7 @@ public class EstadoDtoOut {
         this.idEstado = idEstado;
         this.nombre = nombre;
     }
+
+
+   
 }

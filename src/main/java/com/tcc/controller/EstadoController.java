@@ -1,15 +1,14 @@
 package com.tcc.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import com.tcc.dto.EstadoDtoOut;
-import com.tcc.service.IEstadoService;
-
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.tcc.service.IEstadoService;
 
 
 @RestController
@@ -19,16 +18,37 @@ public class EstadoController {
     private IEstadoService estadoService; 
 
     @GetMapping("/estados")
-    public List<EstadoDtoOut> getEstados() 
+    public  Map<String, Object> getEstados() 
     {
-        List<EstadoDtoOut> estados = estadoService.getEstados();
-        return estados;
+        Map<String, Object> response = new HashMap<>();
+
+        try
+        {
+            response.put("Estado", "200");
+            response.put("Response", estadoService.getEstados());
+
+        } catch(Exception ex) {
+            response.put("Estado", "500");
+            response.put("Response", ex.getMessage());
+        }
+        return response;
     }
 
     @GetMapping("/nombreEstado/{idEstado}")
-    public String getEstados(@PathVariable Integer idEstado) 
+    public Map<String, Object> getEstados(@PathVariable Integer idEstado)
     {
-        return estadoService.getNombreEstado(idEstado);
+        Map<String, Object> response = new HashMap<>();
+        try
+        {
+            response.put("Estado", "200");
+            response.put("Response",  estadoService.getNombreEstado(idEstado));
+
+        } catch (Exception ex) {
+            response.put("Estado", "500");
+            response.put("Response", ex.getMessage());
+        }
+
+        return response;
     }
 
     

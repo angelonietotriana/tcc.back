@@ -2,9 +2,11 @@ package com.tcc.dto;
 
 import java.util.Date;
 
+import com.tcc.models.Despacho;
+
 public class DespachoDtoOut {
 
-    private Integer IdDespacho;
+    private Integer idDespacho;
     private Date fechaCreacion;
     private Integer ciudadOrigen;
     private Integer ciudadDestino;
@@ -22,7 +24,7 @@ public class DespachoDtoOut {
     
     
     public Integer getIdDespacho() {
-        return IdDespacho;
+        return idDespacho;
     }
     public Date getFechaCreacion() {
         return fechaCreacion;
@@ -68,8 +70,6 @@ public class DespachoDtoOut {
     }
 
 
-
-
 public DespachoDtoOut( Integer IdDespacho,
                         Date fechaCreacion,
                         Integer ciudadOrigen,
@@ -86,7 +86,7 @@ public DespachoDtoOut( Integer IdDespacho,
                         String numeroEnvio,
                         Integer idEstado) {
     super();
-    this.IdDespacho = IdDespacho;
+    this.idDespacho = IdDespacho;
     this.fechaCreacion = fechaCreacion;
     this.ciudadOrigen = ciudadOrigen;
     this.ciudadDestino = ciudadDestino;
@@ -102,5 +102,26 @@ public DespachoDtoOut( Integer IdDespacho,
     this.numeroEnvio = numeroEnvio;
     this.idEstado = idEstado;
     
- }
+}
+
+public DespachoDtoOut(Despacho EntityToDto) {
+
+    this.idDespacho = EntityToDto.getIdDespacho();
+    this.fechaCreacion = EntityToDto.getFechaCreacion();
+    this.ciudadOrigen = EntityToDto.getCiudadOrigen();
+    this.ciudadDestino = EntityToDto.getCiudadDestino();
+    this.direccionRemitente = EntityToDto.getDireccionRemitente();
+    this.direccionDestinatario = EntityToDto.getDireccionDestinatario();
+    this.documentoRemitente = EntityToDto.getDocumentoRemitente();
+    this.documentoDestinatario = EntityToDto.getDocumentoDestinatario();
+    this.nombreRemitente = EntityToDto.getNombreRemitente();
+    this.nombreDestinatario = EntityToDto.getNombreDestinatario();
+    this.celRemitente = EntityToDto.getCelRemitente();
+    this.celDestinatario = EntityToDto.getCelDestinatario();
+    this.idMercancia = EntityToDto.getIdMercancia();
+    this.numeroEnvio = EntityToDto.getNumeroEnvio();
+    this.idEstado = EntityToDto.getIdEstado();
+
+}
+
 }

@@ -2,6 +2,8 @@ package com.tcc.models;
 
 import java.util.Date;
 
+import com.tcc.dto.DespachoDtoIn;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,56 +26,62 @@ import jakarta.persistence.Table;
                            })                        
 public class Despacho {
 
-    @Id
-    @Column(name = "ID_DESPACHO")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer IdDespacho;
+@Id
+@Column(name = "ID_DESPACHO")
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer idDespacho;
 
-    @Column(name = "FECHA_CREACION")
-    private Date fechaCreacion;
+@Column(name = "FECHA_CREACION")
+private Date fechaCreacion;
 
-    @Column(name = "CIUDAD_ORIGEN")
-    private Integer ciudadOrigen;
+@Column(name = "CIUDAD_ORIGEN")
+private Integer ciudadOrigen;
 
-    @Column(name = "CIUDAD_DESTINO")
-    private Integer ciudadDestino;
+@Column(name = "CIUDAD_DESTINO")
+private Integer ciudadDestino;
 
-    @Column(name = "DIRECCION_REMITENTE")
-    private String direccionRemitente;
-    
-    @Column(name = "DIRECCION_DESTINATARIO")
-    private String direccionDestinatario;
+@Column(name = "DIRECCION_REMITENTE")
+private String direccionRemitente;
 
-    @Column(name = "DOCUMENTO_REMITENTE")
-    private String documentoRemitente; 
-    
-    @Column(name = "DOCUMENTO_DESTINATARIO")
-    private String documentoDestinatario; 
-    
-    @Column(name = "NOMBRE_REMITENTE")
-    private String nombreRemitente;
-    
-    @Column(name = "NOMBRE_DESTINATARIO")
-    private String nombreDestinatario;  
+@Column(name = "DIRECCION_DESTINATARIO")
+private String direccionDestinatario;
 
-    @Column(name = "CEL_REMITENTE")
-    private String celRemitente;
-     
-    @Column(name = "CEL_DESTINATARIO")
-    private String celDestinatario;  
-    
-    @Column(name = "ID_MERCANCIA")
-    private Integer idMercancia;
-    
-    @Column(name = "NUMERO_ENVIO")
-    private String numeroEnvio;   
-    
-    @Column(name = "ID_ESTADO")
-    private Integer idEstado; 
-    
+@Column(name = "DOCUMENTO_REMITENTE")
+private String documentoRemitente; 
 
+@Column(name = "DOCUMENTO_DESTINATARIO")
+private String documentoDestinatario; 
+
+@Column(name = "NOMBRE_REMITENTE")
+private String nombreRemitente;
+
+@Column(name = "NOMBRE_DESTINATARIO")
+private String nombreDestinatario;  
+
+@Column(name = "CEL_REMITENTE")
+private String celRemitente;
+
+@Column(name = "CEL_DESTINATARIO")
+private String celDestinatario;  
+
+@Column(name = "ID_MERCANCIA")
+private Integer idMercancia;
+
+@Column(name = "NUMERO_ENVIO")
+private String numeroEnvio;   
+
+@Column(name = "ID_ESTADO")
+private Integer idEstado; 
+
+
+public void setIdEstado(Integer idEstado) {
+   this.idEstado = idEstado;
+}
+   public void setNumeroEnvio(String numeroEnvio) {
+      this.numeroEnvio = numeroEnvio;
+   }
    public Integer getIdDespacho() {
-      return IdDespacho;
+      return idDespacho;
    }
    public Date getFechaCreacion() {
       return fechaCreacion;
@@ -122,39 +130,58 @@ public class Despacho {
       super();
    }
 
-public Despacho(Integer IdDespacho,
-                Date fechaCreacion,
-                Integer ciudadOrigen,
-                Integer ciudadDestino,
-                String direccionRemitente,
-                String direccionDestinatario,
-                String documentoRemitente,
-                String documentoDestinatario,
-                String nombreRemitente,
-                String nombreDestinatario,
-                String celRemitente,
-                String celDestinatario,
-                Integer idMercancia,
-                String numeroEnvio,
-                Integer idEstado) {
-    super();
-    this.IdDespacho = IdDespacho;
-    this.fechaCreacion = fechaCreacion;
-    this.ciudadOrigen = ciudadOrigen;
-    this.ciudadDestino = ciudadDestino;
-    this.direccionRemitente = direccionRemitente;
-    this.direccionDestinatario = direccionDestinatario;
-    this.documentoRemitente = documentoRemitente;
-    this.documentoDestinatario = documentoDestinatario;
-    this.nombreRemitente = nombreRemitente;
-    this.nombreDestinatario = nombreDestinatario;
-    this.celRemitente = celRemitente;
-    this.celDestinatario = celDestinatario;
-    this.idMercancia = idMercancia;
-    this.numeroEnvio = numeroEnvio;
-    this.idEstado = idEstado;
-    
- }
+public Despacho(Date fechaCreacion,
+               Integer ciudadOrigen,
+               Integer ciudadDestino,
+               String direccionRemitente,
+               String direccionDestinatario,
+               String documentoRemitente,
+               String documentoDestinatario,
+               String nombreRemitente,
+               String nombreDestinatario,
+               String celRemitente,
+               String celDestinatario,
+               Integer idMercancia,
+               String numeroEnvio,
+               Integer idEstado) {
+   super();
+   this.fechaCreacion = fechaCreacion;
+   this.ciudadOrigen = ciudadOrigen;
+   this.ciudadDestino = ciudadDestino;
+   this.direccionRemitente = direccionRemitente;
+   this.direccionDestinatario = direccionDestinatario;
+   this.documentoRemitente = documentoRemitente;
+   this.documentoDestinatario = documentoDestinatario;
+   this.nombreRemitente = nombreRemitente;
+   this.nombreDestinatario = nombreDestinatario;
+   this.celRemitente = celRemitente;
+   this.celDestinatario = celDestinatario;
+   this.idMercancia = idMercancia;
+   this.numeroEnvio = numeroEnvio;
+   this.idEstado = idEstado;
+}
+
+public Despacho(DespachoDtoIn dtoToEntity) {
+
+   super();
+   this.fechaCreacion = dtoToEntity.getFechaCreacion();
+   this.ciudadOrigen = dtoToEntity.getCiudadOrigen();
+   this.ciudadDestino = dtoToEntity.getCiudadDestino();
+   this.direccionRemitente = dtoToEntity.getDireccionRemitente();
+   this.direccionDestinatario = dtoToEntity.getDireccionDestinatario();
+   this.documentoRemitente = dtoToEntity.getDocumentoRemitente();
+   this.documentoDestinatario = dtoToEntity.getDocumentoDestinatario();
+   this.nombreRemitente = dtoToEntity.getNombreRemitente();
+   this.nombreDestinatario = dtoToEntity.getNombreDestinatario();
+   this.celRemitente = dtoToEntity.getCelRemitente();
+   this.celDestinatario = dtoToEntity.getCelDestinatario();
+   this.idMercancia = dtoToEntity.getIdMercancia();
+   this.numeroEnvio = dtoToEntity.getNumeroEnvio();
+   this.idEstado = dtoToEntity.getIdEstado();
+
+}
+
+
 
 
 }
