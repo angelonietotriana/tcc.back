@@ -2,25 +2,40 @@ package com.tcc.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tcc.models.Despacho;
 
 public class DespachoDtoOut {
-
+    @JsonProperty("id_despacho")
     private Integer idDespacho;
+    @JsonProperty("fecha_creacion")
     private Date fechaCreacion;
+    @JsonProperty("ciudad_origen")
     private Integer ciudadOrigen;
+    @JsonProperty("ciudad_destino")
     private Integer ciudadDestino;
+    @JsonProperty("direccion_remitente")
     private String direccionRemitente;
+    @JsonProperty("direccion_destinatario")
     private String direccionDestinatario;
-    private String documentoRemitente; 
-    private String documentoDestinatario; 
+    @JsonProperty("documento_remitente")
+    private String documentoRemitente;
+    @JsonProperty("documento_destinatario")
+    private String documentoDestinatario;
+    @JsonProperty("nombre_remitente")
     private String nombreRemitente;
-    private String nombreDestinatario;  
+    @JsonProperty("nombre_destinatario")
+    private String nombreDestinatario;
+    @JsonProperty("celular_remitente")
     private String celRemitente;
-    private String celDestinatario;  
+    @JsonProperty("celular_destinatario")
+    private String celDestinatario;
+    @JsonProperty("id_mercancia")
     private Integer idMercancia;
-    private String numeroEnvio;   
-    private Integer idEstado; 
+    @JsonProperty("numero_envio")
+    private String numeroEnvio;
+    @JsonProperty("id_estado")
+    private Integer idEstado;
     
     
     public Integer getIdDespacho() {

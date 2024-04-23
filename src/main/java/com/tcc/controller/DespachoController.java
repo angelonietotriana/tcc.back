@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,7 @@ import com.tcc.service.IDespachoService;
 
 
 @RestController
+@CrossOrigin(origins = "*") 
 public class DespachoController {
 
 
@@ -69,9 +71,11 @@ public class DespachoController {
         } catch(JsonParseException | InvalidFormatException ex){
             response.put("Estado", "402");
             response.put("Response","Formato incorrecto de entrada"); 
+            System.out.println(ex.getMessage());
         } catch(Exception ex) {
             response.put("Estado", "500");
             response.put("Response", ex.getMessage());
+            System.out.println(ex.getMessage());
         }
 
         return response;

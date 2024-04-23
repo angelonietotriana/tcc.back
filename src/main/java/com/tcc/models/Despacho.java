@@ -77,6 +77,11 @@ private Integer idEstado;
 public void setIdEstado(Integer idEstado) {
    this.idEstado = idEstado;
 }
+public void setFechaCreacion(Date fechaCreacion) {
+   this.fechaCreacion = fechaCreacion;
+}
+
+
    public void setNumeroEnvio(String numeroEnvio) {
       this.numeroEnvio = numeroEnvio;
    }

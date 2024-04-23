@@ -105,6 +105,7 @@ public String guardarDespacho(DespachoDtoIn despachoDtoIn) throws Exception {
     
         Despacho entityToSave = new Despacho(despachoDtoIn);
         entityToSave.setNumeroEnvio(numerEnvio);
+        entityToSave.setFechaCreacion(new Date());
     
         despachoRepository.saveAndFlush(entityToSave);
     
